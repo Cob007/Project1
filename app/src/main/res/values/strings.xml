@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MovieApp</string>
+    <string name="error_text">loading error</string>
+</resources>

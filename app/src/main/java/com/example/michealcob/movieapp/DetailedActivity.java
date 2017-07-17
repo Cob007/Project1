@@ -21,7 +21,7 @@ public class DetailedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed);
 
-        imageView = (ImageView) findViewById(R.id.image_view);
+        imageView = (ImageView) findViewById(R.id.detailed_image_view);
         title = (TextView) findViewById(R.id.title);
         overview = (TextView) findViewById(R.id.overview);
 
@@ -33,7 +33,6 @@ public class DetailedActivity extends AppCompatActivity {
 
         Picasso.with(this)
                 .load("http://image.tmdb.org/t/p/342//"+movieClass.getImageurl())
-                .placeholder(R.color.colorPrimary)
                 .into(imageView);
 
         title.setText(movieClass.getTitle());

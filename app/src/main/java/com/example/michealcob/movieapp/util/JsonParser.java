@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +24,7 @@ public class JsonParser {
     public JSONObject moviesObject;
     public JSONArray moviesList;
 
-    List<movie> Movies;
+    public List<movie> Movies;
 
     private String Json;
 
@@ -43,11 +44,13 @@ public class JsonParser {
             title = new String[moviesList.length()];
             overview = new String[moviesList.length()];
 
+            Movies = new ArrayList<>();
+
             for(int i=0; i<moviesList.length(); i++){
                 movie moviesObject = new movie();
 
                 jsonObject = moviesList.getJSONObject(i);
-                imageUrl[i] = jsonObject.getString("backdrop_path");
+                imageUrl[i] = jsonObject.getString("poster_path");
                 title[i] = jsonObject.getString("title");
                 overview[i] = jsonObject.getString("overview");
 

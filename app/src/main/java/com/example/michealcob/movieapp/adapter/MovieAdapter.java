@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.michealcob.movieapp.MainActivity;
 import com.example.michealcob.movieapp.R;
 import com.example.michealcob.movieapp.data.movie;
 import com.squareup.picasso.Picasso;
@@ -47,8 +48,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(MovieAdapter.ViewHolder holder, int position) {
+
         String url = "http://image.tmdb.org/t/p/w342//" + mDataset.get(position).getImageurl();
-        Picasso.with(context).load(url).into(holder.imageView);
+        Picasso.with(holder.imageView.getContext()).load(url).into(holder.imageView);
     }
 
     @Override

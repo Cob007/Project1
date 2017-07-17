@@ -25,14 +25,14 @@ public class DetailedActivity extends AppCompatActivity {
         title = (TextView) findViewById(R.id.title);
         overview = (TextView) findViewById(R.id.overview);
 
-        //Intent intent = getIntent();
-        //movieClass = intent.getParcelableExtra("movies");
+        Intent intent = getIntent();
+        movieClass = intent.getParcelableExtra("movies");
 
-        Bundle intent = getIntent().getExtras();
-        movieClass = intent.getParcelable("movies");
+        /*Bundle intent = getIntent().getExtras();
+        movieClass = intent.getParcelable("movies");*/
 
         Picasso.with(this)
-                .load("http://image.tmdb.org/t/p/342//"+movieClass.getImageurl())
+                .load("http://image.tmdb.org/t/p/342//"+movieClass.getImageurl().toString())
                 .into(imageView);
 
         title.setText(movieClass.getTitle());

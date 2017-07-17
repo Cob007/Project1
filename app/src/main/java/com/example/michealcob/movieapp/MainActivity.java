@@ -1,10 +1,13 @@
 package com.example.michealcob.movieapp;
 
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -14,12 +17,16 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.michealcob.movieapp.adapter.MovieAdapter;
 import com.example.michealcob.movieapp.data.movie;
+import com.example.michealcob.movieapp.listerner.RecyclerViewOnClickListener;
 import com.example.michealcob.movieapp.util.JsonParser;
 import com.example.michealcob.movieapp.util.Url;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+        implements RecyclerViewOnClickListener.OnItemClickListener{
 
     public static String TAG = MainActivity.class.getName();
     public String JSON_URL;
@@ -40,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.addOnItemTouchListener(new RecyclerViewOnClickListener(this, this));
         searchPosition(0);
         sendRequest();
     }
@@ -65,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                         MovieList = jsonParser.getMovies();
                         adapter = new MovieAdapter(MovieList);
                         recyclerView.setAdapter(adapter);
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -75,5 +84,17 @@ public class MainActivity extends AppCompatActivity {
                 });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Intent intent = new Intent(this, DetailedActivity.class);
+        intent.putExtra("movies", MovieList.get(position));
+        startActivity(intent);
+    }
+
+    @Override
+    public void onItemLongClick(View view, int position) {
+
     }
 }

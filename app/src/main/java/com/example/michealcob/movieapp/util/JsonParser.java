@@ -45,9 +45,9 @@ public class JsonParser {
             overview = new String[moviesList.length()];
 
             Movies = new ArrayList<>();
-
+g
             for(int i=0; i<moviesList.length(); i++){
-                movie moviesObject = new movie();
+                movie moviesObject = new movie(null, null, null);
 
                 jsonObject = moviesList.getJSONObject(i);
                 imageUrl[i] = jsonObject.getString("poster_path");

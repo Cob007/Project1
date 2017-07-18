@@ -32,7 +32,7 @@ public class DetailedActivity extends AppCompatActivity {
         movieClass = intent.getParcelable("movies");*/
 
         Picasso.with(this)
-                .load("http://image.tmdb.org/t/p/342//"+movieClass.getImageurl())
+                .load("http://image.tmdb.org/t/p/w342//"+movieClass.getImageurl())
                 .into(imageView);
 
         title.setText(movieClass.getTitle());

@@ -20,6 +20,8 @@ public class JsonParser {
     public static String[] imageUrl;
     public static String[] title;
     public static String[] overview;
+    public static String[] releaseDate;
+    public static String[] voteAverage;
 
     public JSONObject moviesObject;
     public JSONArray moviesList;
@@ -43,19 +45,25 @@ public class JsonParser {
             imageUrl = new String[moviesList.length()];
             title = new String[moviesList.length()];
             overview = new String[moviesList.length()];
+            releaseDate = new String[moviesList.length()];
+            voteAverage = new String[moviesList.length()];
 
             Movies = new ArrayList<>();
             for(int i=0; i<moviesList.length(); i++){
-                movie moviesObject = new movie(null, null, null);
+                movie moviesObject = new movie(null, null, null, null, null);
 
                 jsonObject = moviesList.getJSONObject(i);
                 imageUrl[i] = jsonObject.getString("poster_path");
                 title[i] = jsonObject.getString("title");
                 overview[i] = jsonObject.getString("overview");
+                releaseDate[i] = jsonObject.getString("release_date");
+                voteAverage[i] = jsonObject.getString("vote_average");
 
                 moviesObject.setImageurl(imageUrl[i]);
                 moviesObject.setTitle(title[i]);
                 moviesObject.setOverview(overview[i]);
+                moviesObject.setReleaseDate(releaseDate[i]);
+                moviesObject.setVotaAverage(voteAverage[i]);
 
                 Movies.add(moviesObject);
             }

@@ -14,7 +14,7 @@ public class DetailedActivity extends AppCompatActivity {
     movie movieClass;
 
     ImageView imageView;
-    TextView title, overview;
+    TextView title, overview, releaseDate, vote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,8 @@ public class DetailedActivity extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.detailed_image_view);
         title = (TextView) findViewById(R.id.title);
         overview = (TextView) findViewById(R.id.overview);
+        releaseDate = (TextView) findViewById(R.id.release_date);
+        vote = (TextView) findViewById(R.id.vote);
 
         Intent intent = getIntent();
         movieClass = intent.getParcelableExtra("movies");
@@ -37,5 +39,7 @@ public class DetailedActivity extends AppCompatActivity {
 
         title.setText(movieClass.getTitle());
         overview.setText(movieClass.getOverview());
+        releaseDate.setText(movieClass.getReleaseDate());
+        vote.setText(movieClass.getVotaAverage());
     }
 }

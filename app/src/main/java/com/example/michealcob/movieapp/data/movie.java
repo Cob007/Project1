@@ -69,7 +69,7 @@ public class movie implements Parcelable{
     }
 
     public movie(Parcel in){
-        String[] data = new String[3];
+        String[] data = new String[5];
 
         in.readStringArray(data);
         this.imageurl = data[0];

@@ -67,9 +67,11 @@ public class MainActivity extends AppCompatActivity
         switch (item.getItemId()){
             case R.id.top_rated:
                 searchPosition(1);
+                sendRequest();
                 return true;
             case R.id.most_popular:
                 searchPosition(2);
+                sendRequest();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
